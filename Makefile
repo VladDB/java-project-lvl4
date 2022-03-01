@@ -19,4 +19,11 @@ test:
 report:
 	./gradlew jacocoTestReport
 
+start:
+	./gradlew run
+
+generate-migrations:
+	./gradlew generateMigrations
+
+
 .PHONY: build

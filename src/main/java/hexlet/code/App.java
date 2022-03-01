@@ -6,16 +6,22 @@ public class App {
 
     public static void main(String[] args) {
         Javalin app = getApp();
-        app.start(5000);
+        app.start();
     }
 
     public static Javalin getApp() {
         Javalin app = Javalin.create(config -> {
             config.enableDevLogging();
-        }).start(5000);
+        }).start(getPort());
 
         app.get("/", ctx -> ctx.result("Hello World!"));
 
         return app;
     }
+
+    private static int getPort() {
+        String port = System.getenv().getOrDefault("PORT", "5000");
+        return Integer.valueOf(port);
+    }
+
 }
