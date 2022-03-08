@@ -35,7 +35,7 @@ public class UrlController {
         List<Integer> pages = IntStream
                 .range(1, lastPage)
                 .boxed()
-                .toList();
+                .collect(Collectors.toList());
 
         ctx.attribute("urls", urls);
         ctx.attribute("pages", pages);
