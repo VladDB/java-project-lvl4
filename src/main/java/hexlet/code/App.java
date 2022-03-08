@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.controllers.UrlController;
 import hexlet.code.controllers.WelcomeController;
 import io.javalin.Javalin;
 import io.javalin.plugin.rendering.template.JavalinThymeleaf;
@@ -10,11 +11,25 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import java.nio.file.WatchEvent;
 
+import static io.javalin.apibuilder.ApiBuilder.*;
+
 public class App {
 
     public static void main(String[] args) {
         Javalin app = getApp();
         app.start();
+    }
+
+    public static void addRoutes(Javalin app) {
+        app.get("/", WelcomeController.welcome);
+
+        app.routes(() -> {
+            path("urls", () -> {
+                get(UrlController.showAllUrls);
+                post(UrlController.createUrl);
+                get("{id}", UrlController.showUrl);
+            });
+        });
     }
 
     public static Javalin getApp() {
