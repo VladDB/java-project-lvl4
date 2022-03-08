@@ -39,7 +39,7 @@ public class App {
             JavalinThymeleaf.configure(getTemplateEngine());
         }).start(getPort());
 
-        app.get("/", WelcomeController.welcome);
+        addRoutes(app);
 
         return app;
     }
