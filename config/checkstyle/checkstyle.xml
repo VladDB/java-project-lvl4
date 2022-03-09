@@ -109,7 +109,7 @@
 
         <!-- Checks for imports                              -->
         <!-- See https://checkstyle.org/config_import.html -->
-        <module name="AvoidStarImport"/>
+        <!-- <module name="AvoidStarImport"/> -->
         <module name="IllegalImport"/> <!-- defaults to sun.* packages -->
         <module name="RedundantImport"/>
         <module name="UnusedImports">
@@ -154,7 +154,7 @@
         <!-- <module name="HiddenField"/> -->
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
-        <module name="MagicNumber"/>
+        <!-- <module name="MagicNumber"/> -->
         <module name="MissingSwitchDefault"/>
         <module name="MultipleVariableDeclarations"/>
         <module name="SimplifyBooleanExpression"/>
@@ -162,11 +162,11 @@
 
         <!-- Checks for class design                         -->
         <!-- See https://checkstyle.org/config_design.html -->
-        <module name="DesignForExtension"/>
+        <!-- <module name="DesignForExtension"/> -->
         <module name="FinalClass"/>
         <!-- <module name="HideUtilityClassConstructor"/> -->
         <module name="InterfaceIsType"/>
-        <module name="VisibilityModifier"/>
+        <!-- <module name="VisibilityModifier"/> -->
 
         <!-- Miscellaneous other checks.                   -->
         <!-- See https://checkstyle.org/config_misc.html -->
@@ -175,9 +175,9 @@
         <module name="TodoComment"/>
         <module name="UpperEll"/>
 
-        <module name="Indentation">
+        <!-- <module name="Indentation">
           <property name="basicOffset" value="4"/>
-        </module>
+        </module> -->
 
         <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->
         <module name="SuppressionXpathFilter">

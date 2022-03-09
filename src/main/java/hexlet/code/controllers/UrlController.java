@@ -11,18 +11,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class UrlController {
+public final class UrlController {
     public static Handler showAllUrls = ctx -> {
         int page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
         int rowsPerPage = 10;
         int offset = (page - 1) * rowsPerPage;
 
-        QUrl url = QUrl.alias();
+//        QUrl url = QUrl.alias();
 
         PagedList<Url> pagedUrls = new QUrl()
                 .setFirstRow(offset)
                 .setMaxRows(rowsPerPage)
-                .select(url.id, url.name)
                 .orderBy()
                     .id.asc()
                 .findPagedList();

@@ -1,5 +1,5 @@
 install:
-	./gradlew clean install
+	./gradlew install
 
 run-dist:
 	./build/install/app/bin/app
@@ -20,7 +20,10 @@ report:
 	./gradlew jacocoTestReport
 
 start:
-	./gradlew run
+	APP_ENV=development ./gradlew run
+
+start-dist:
+	APP_ENV=production ./build/install/app/bin/app
 
 generate-migrations:
 	./gradlew generateMigrations
