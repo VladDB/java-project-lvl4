@@ -17,8 +17,6 @@ public final class UrlController {
         int rowsPerPage = 10;
         int offset = (page - 1) * rowsPerPage;
 
-//        QUrl url = QUrl.alias();
-
         PagedList<Url> pagedUrls = new QUrl()
                 .setFirstRow(offset)
                 .setMaxRows(rowsPerPage)
