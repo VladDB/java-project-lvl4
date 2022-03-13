@@ -1,0 +1,18 @@
+<html lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+	<title>Хекслет — больше чем школа программирования. Онлайн курсы, сообщество программистов</title>
+	<meta name="description"
+		content="Живое онлайн сообщество программистов и разработчиков на JS, Python, Java, PHP, Ruby. Авторские программы обучения с практикой и готовыми проектами в резюме. Помощь в трудоустройстве после успешного окончания обучения">
+
+		<link href='https://en.hexlet.io/' hreflang='en' rel='alternate'>
+</head>
+<body>
+    <main class='mb-5'>
+		<div class='mb-5'>
+			<h1 class='mb-5'>Онлайн-<span class="text-primary">школа программирования</span>, за
+				выпускниками которой <span class="text-primary">охотятся</span> компании
+			</h1>
+		</div>
+    </main>
+</body>
