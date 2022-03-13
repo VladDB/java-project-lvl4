@@ -162,5 +162,36 @@ class AppTest {
             assertThat(actualBody).contains(expectH1);
             assertThat(actualBody).contains(expectDescription);
         }
+
+        @Test
+        void deleteUrl() {
+            String testValue = "https://test.com";
+
+            HttpResponse<String> responsePost = Unirest
+                    .post(baseUrl + "/urls")
+                    .field("url", testValue)
+                    .asEmpty();
+
+            Url testUrl = new QUrl()
+                    .name.equalTo(testValue)
+                    .findOne();
+
+            HttpResponse<String> responseDelete = Unirest
+                    .post(baseUrl + "/urls/" + testUrl.getId() + "/delete")
+                    .asEmpty();
+
+            assertThat(responseDelete.getHeaders().getFirst("Location")).isEqualTo("/urls");
+
+            HttpResponse<String> response = Unirest.get(baseUrl + "/urls").asString();
+
+            assertThat(response.getBody()).doesNotContain(testValue);
+            assertThat(response.getBody()).contains("Страница удалена");
+
+            Boolean noneUrl = new QUrl()
+                    .name.equalTo(testValue)
+                    .exists();
+
+            assertThat(noneUrl).isFalse();
+        }
     }
 }

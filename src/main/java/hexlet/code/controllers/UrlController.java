@@ -126,4 +126,45 @@ public final class UrlController {
 
         ctx.redirect("/urls/" + id);
     };
+
+    public static Handler deleteUrl = ctx -> {
+        long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
+
+        Url url = new QUrl()
+                .id.equalTo(id)
+                .findOne();
+
+        List<UrlCheck> urlChecks = new QUrlCheck()
+                .url.equalTo(url)
+                .orderBy().id.asc()
+                .findList();
+
+        for (UrlCheck urlCheck : urlChecks) {
+            urlCheck.delete();
+        }
+
+        url.delete();
+
+        ctx.sessionAttribute("flash", "Страница удалена");
+        ctx.sessionAttribute("flash-type", "success");
+
+        ctx.redirect("/urls");
+    };
+
+    public static Handler checkDelete = ctx -> {
+        long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
+
+        UrlCheck urlCheck = new QUrlCheck()
+                .id.equalTo(id)
+                .findOne();
+
+        Long urlId = urlCheck.getUrl().getId();
+
+        urlCheck.delete();
+
+        ctx.sessionAttribute("flash", "Проверка удалена");
+        ctx.sessionAttribute("flash-type", "success");
+
+        ctx.redirect("/urls/" + urlId);
+    };
 }

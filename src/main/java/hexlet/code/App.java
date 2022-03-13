@@ -28,6 +28,8 @@ public class App {
                 post(UrlController.createUrl);
                 get("{id}", UrlController.showUrl);
                 post("{id}/checks", UrlController.checkUrl);
+                post("{id}/delete", UrlController.deleteUrl);
+                post("{id}/checkDelete", UrlController.checkDelete);
             });
         });
     }

@@ -22,6 +22,11 @@
             </tbody>
         </table>
 
+        <form method="post" th:action="@{/urls/{id}/delete(id=${url.id})}">
+            <button type="submit" class="btn btn-danger">Удалить сайт</button>
+        </form>
+
+        <br>
         <h2 class="mt5">Проверки</h2>
 
         <form method="post" th:action="@{/urls/{id}/checks(id=${url.id})}">
@@ -37,6 +42,7 @@
                 <th>h1</th>
                 <th>description</th>
                 <th class="col-2">Дата проверки</th>
+                <th>Удалить</th>
             </tr>
             </thead>
             <tbody>
@@ -47,6 +53,12 @@
                 <td th:text="${#strings.abbreviate(urlCheck.h1, 40)}">h1</td>
                 <td th:text="${#strings.abbreviate(urlCheck.description, 50)}">description</td>
                 <td th:text="${#temporals.format(urlCheck.createdAt, 'dd/MM/yyyy HH:mm')}">Дата создания</td>
+
+                <td>
+                    <form method="post" th:action="@{/urls/{id}/checkDelete(id=${urlCheck.id})}">
+                        <button type="submit" class="btn btn-danger">X</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
