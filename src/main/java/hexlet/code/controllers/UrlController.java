@@ -84,7 +84,7 @@ public final class UrlController {
 
         List<UrlCheck> urlChecks = new QUrlCheck()
                 .url.equalTo(url)
-                .orderBy().id.asc()
+                .orderBy().id.desc()
                 .findList();
 
         ctx.attribute("url", url);
@@ -116,11 +116,11 @@ public final class UrlController {
             UrlCheck urlCheck = new UrlCheck(statusCode, title, h1, description, url);
             urlCheck.save();
 
-            ctx.sessionAttribute("flash", "Сайт проверен");
+            ctx.sessionAttribute("flash", "Страница успешно проверена");
             ctx.sessionAttribute("flash-type", "success");
 
         } catch (UnirestException e) {
-            ctx.sessionAttribute("flash", "Сайт недоступен");
+            ctx.sessionAttribute("flash", "Страница недоступна");
             ctx.sessionAttribute("flash-type", "danger");
         }
 
