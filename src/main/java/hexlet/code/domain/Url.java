@@ -31,6 +31,7 @@ public class Url extends Model {
         this.name = name;
     }
 
+    //возвращает время последней проверки
     public Instant getLastCheck() {
         return urlChecks.get(urlChecks.size() - 1).getCreatedAt();
     }
