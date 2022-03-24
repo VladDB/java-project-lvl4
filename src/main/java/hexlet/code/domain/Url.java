@@ -32,7 +32,7 @@ public class Url extends Model {
     }
 
     //возвращает время последней проверки
-    public Instant getLastCheck() {
+    public final Instant getLastCheck() {
         return urlChecks.get(urlChecks.size() - 1).getCreatedAt();
     }
 }
