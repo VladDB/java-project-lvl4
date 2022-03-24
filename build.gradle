@@ -39,6 +39,9 @@ dependencies {
     implementation 'org.webjars:bootstrap:5.1.1'
     implementation 'com.konghq:unirest-java:3.13.6'
     implementation 'org.jsoup:jsoup:1.14.3'
+    // https://mvnrepository.com/artifact/commons-validator/commons-validator
+    implementation 'commons-validator:commons-validator:1.7'
+
 
     implementation 'com.h2database:h2:2.1.210'
     implementation 'org.postgresql:postgresql:42.3.3'

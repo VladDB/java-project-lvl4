@@ -9,6 +9,7 @@ import io.javalin.http.Handler;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -51,6 +52,12 @@ public final class UrlController {
     public static Handler createUrl = ctx -> {
         try {
             URL url = new URL(ctx.formParam("url"));
+            UrlValidator urlValidator = new UrlValidator();
+
+            if (!url.toString().contains("localhost") && !urlValidator.isValid(url.toString())) {
+                throw new MalformedURLException();
+            }
+
             String normalUrl = url.getProtocol() + "://" + url.getAuthority();
 
             boolean checkUrlInDB = new QUrl()
